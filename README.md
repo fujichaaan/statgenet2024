@@ -49,6 +49,11 @@
       <td>.csv</td>
       <td><a href="https://drive.google.com/file/d/1e7-NfoJHxScoTWVc47WeOdZhv_PLu5rF/view?usp=sharing">volcano.csv</a></td>
     </tr>
+    <tr>
+      <td>Volcano plot用のラベルデータ</td>
+      <td>.csv</td>
+      <td><a href="https://drive.google.com/file/d/1ZvAEiXHqDHMPgH9bjhVc2ajXyn9PLok-/view?usp=drive_link">volcano_label.csv</a></td>
+    </tr>
   </table>
 
 <br>
