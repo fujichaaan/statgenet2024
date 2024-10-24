@@ -11,7 +11,7 @@ library(tidyverse); library(readxl); library(UpSetR); library(ggvenn); library(u
 # P.19 --------------------------------------------------------------------
 
 # Reading table and Edit variable
-ishigaki_R4 <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_R4 <- read_excel("ishigaki.xlsx") |>
   filter(year == "R4") |>
   mutate(causes = factor(causes,
                          levels = c("Other", setdiff(causes[order(num)], "Other")),
@@ -33,7 +33,7 @@ ggplot(ishigaki_R4, aes(x = num, y = causes)) +
 # P.20 --------------------------------------------------------------------
 
 # Reading table and Edit variable
-ishigaki_R4 <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_R4 <- read_excel("ishigaki.xlsx") |>
   filter(year == "R4") |>
   mutate(causes = factor(causes,
                          labels = c("悪性新生物", "脳血管疾患", "糖尿病", "心疾患", "高血圧性疾患", "肝硬変", "その他", "肺炎", "老衰", "自殺", "結核", "不慮の事故")))
@@ -54,7 +54,7 @@ ggplot(ishigaki_R4, aes(x = num, y = causes)) +
 # P.21 ---------------------------------------------------------------------
 
 # Reading table and Edit this
-ishigaki_R4 <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_R4 <- read_excel("ishigaki.xlsx") |>
   filter(year == "R4") |>
   mutate(causes = factor(causes,
                          levels = c("Other", setdiff(causes[order(num)], "Other")),
@@ -81,7 +81,7 @@ ggplot(ishigaki_R4, aes(x = num, y = year, fill = cancer)) +
 # P.22 ---------------------------------------------------------------------
 
 # Reading table and Edit this
-ishigaki_R4 <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_R4 <- read_excel("ishigaki.xlsx") |>
   filter(year == "R4") |>
   mutate(causes = factor(causes,
                          levels = c("Other", setdiff(causes[order(num)], "Other")),
@@ -107,7 +107,7 @@ ggplot(ishigaki_R4, aes(x = num, y = causes, fill = cancer)) +
 # P.27 --------------------------------------------------------------------
 
 # Reading table and Edit this
-ishigaki_R4 <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_R4 <- read_excel("ishigaki.xlsx") |>
   filter(year == "R4") |>
   mutate(causes = factor(causes,
                          levels = c("Other", setdiff(causes[order(num)], "Other")),
@@ -141,7 +141,7 @@ ggplot(ishigaki_R4, aes(x = num, y = causes, fill = causes)) +
 # P.28 --------------------------------------------------------------------
 
 # Reading table and Edit this
-ishigaki_cancer <- read_excel("data/ishigaki.xlsx") |>
+ishigaki_cancer <- read_excel("ishigaki.xlsx") |>
   mutate(causes_cancer = factor(if_else(causes == "Cancer", "Cancer", "Others"),
                                 levels = c("Others", "Cancer"),
                                 labels = c("その他", "悪性新生物")))
@@ -163,7 +163,7 @@ ishigaki_cancer |>
 # P.29 --------------------------------------------------------------------
 
 # Reading table and Edit this
-ishigaki <- read_excel("data/ishigaki.xlsx") |>
+ishigaki <- read_excel("ishigaki.xlsx") |>
   mutate(causes = factor(causes,
                          levels = c("Other", setdiff(causes[order(num)], "Other")),
                          labels = c("その他", "肝硬変", "結核", "糖尿病", "高血圧性疾患", "不慮の事故", "肺炎", "自殺", "脳血管疾患", "老衰", "心疾患", "悪性新生物")))
@@ -183,7 +183,7 @@ ggplot(ishigaki, aes(x = year, y = num, fill = causes)) +
 
 # P.30 --------------------------------------------------------------------
 
-ishigaki <- read_excel("data/ishigaki.xlsx") |>
+ishigaki <- read_excel("ishigaki.xlsx") |>
   mutate(causes = factor(causes,
                          levels = c(setdiff(causes[order(-num)], "Other"), "Other"),
                          labels = c("悪性新生物", "心疾患", "老衰", "脳血管疾患", "自殺", "肺炎", "不慮の事故", "高血圧性疾患", "糖尿病","結核", "肝硬変", "その他")))
@@ -230,7 +230,7 @@ ggplot(ishigaki, aes(x = year, y = num, fill = causes)) +
 #   write_tsv("data/glu.tsv.gz")
 
 # Count the variants with P < 5.0 * 10-8
-gwas_four <- read_table("data/gwas_four.txt") |>
+gwas_four <- read_table("gwas_four.txt") |>
   mutate(sbp_gws = if_else(P_sbp < 5.0 * 10^-8, 1, 0),
          ldl_gws = if_else(P_ldl < 5.0 * 10^-8, 1, 0),
          tg_gws  = if_else(P_tg  < 5.0 * 10^-8, 1, 0),
@@ -299,7 +299,7 @@ ggvenn(gwas_four_venn,
 # write_csv(info.pca, "data/PCA.csv")
 
 # Draw scatter plot with PCA
-read_csv("data/PCA.csv") |>
+read_csv("PCA.csv") |>
   ggplot(aes(x = PC1, y = PC2, color = factor(label))) + 
   geom_point(alpha = 0.8) +
   guides(color = guide_legend(override.aes = aes(size = 4))) + 
@@ -331,7 +331,7 @@ read_csv("data/PCA.csv") |>
 # write_csv(info.umap, "data/UMAP.csv")
 
 # Load UMAP.csv & Draw scatter plot with UMAP
-read_csv("data/UMAP.csv") |>
+read_csv("UMAP.csv") |>
   ggplot(aes(x = umap1, y = umap2, color = factor(label))) + 
   geom_point(alpha = 0.8) +
   guides(color = guide_legend(override.aes = aes(size = 4))) + 
@@ -364,9 +364,9 @@ read_csv("data/UMAP.csv") |>
 # write.csv(volcano_label, "data/volcano_label.csv", row.names = F)
 
 # Visualization
-volcano_label <- read_csv("data/volcano_label.csv")
+volcano_label <- read_csv("volcano_label.csv")
 
-read_csv("data/volcano.csv") |>
+read_csv("volcano.csv") |>
   ggplot(aes(x = log2fc, y = log10fdr, color = class)) +
   geom_vline(xintercept = c(-1, 1), linetype = 2, color = "Grey") +
   geom_hline(yintercept = 1.3, linetype = 2, color = "Grey") +
